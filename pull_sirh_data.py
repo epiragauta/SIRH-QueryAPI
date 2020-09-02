@@ -18,7 +18,7 @@ base_path = "C:/ws/MADS/SIRH/pull_data/"
 services = ["usuarios", "predios", "concesiones", "captaciones", "usos", "muestras", "mediciones","permisosvertimiento","puntosvertimiento","puntosmonitoreo","funias","pueas","fuentes"]
 csv_ext = ".csv"
 
-payload = "{\r\n    \"userName\":\"admin\",\r\n    \"password\":\"admin\"\r\n}\r\n"
+payload = "{\r\n    \"userName\":\"******\",\r\n    \"password\":\"******\"\r\n}\r\n"
 headers = {
   'Content-Type': 'application/json'
 }

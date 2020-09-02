@@ -1,4 +1,4 @@
-# Procedimiento para la descarga de datos de SIRH (Sistema de Información del Recurso Hídrico #
+# Procedimiento para la descarga de datos de SIRH (Sistema de Información del Recurso Hídrico) #
 
 Fecha: Agosto de 2020
 
