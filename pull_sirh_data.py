@@ -4,21 +4,24 @@
 #   Prerequisitos: Python 2.7 o superior
 #    
 #  Este procedimiento toma la URL de los servicios REST de SIRH
-#  Realiza la autenticación para obtener el Token   
+#  Realiza la autenticacion para obtener el Token   
 #  
 #
 ##################################################################
 import requests
 import csv
 import os
+import time
+from requests.exceptions import Timeout
 
 url = "http://wssirh-qa.ideam.gov.co/API-SIRH/api/v1/"
+#url = "http://186.155.208.228/API-SIRH/api/v1/"
 base_path = "C:/ws/MADS/SIRH/pull_data/"
 
 services = ["usuarios", "predios", "concesiones", "captaciones", "usos", "muestras", "mediciones","permisosvertimiento","puntosvertimiento","puntosmonitoreo","funias","pueas","fuentes"]
 csv_ext = ".csv"
 
-payload = "{\r\n    \"userName\":\"******\",\r\n    \"password\":\"******\"\r\n}\r\n"
+payload = "{\r\n    \"userName\":\"admin\",\r\n    \"password\":\"admin\"\r\n}\r\n"
 headers = {
   'Content-Type': 'application/json'
 }
@@ -47,7 +50,13 @@ for autoridad in autoridades:
         write_file = base_path + s + "_" + autoridad.get('SIGLA') +  csv_ext
         if not os.path.exists(write_file):
             print ("Executing URL : " + urlService)
-            response = requests.request("GET", urlService, headers=headers, data = payload)
+            #time.sleep(5)
+            try:
+                response = requests.request("GET", urlService, headers=headers, data = payload, timeout=30)
+            except Timeout:
+                print("Response time too long")
+            else:
+                print("Request executed")
             r = response.json()
             rows = r.get('registros')
             
