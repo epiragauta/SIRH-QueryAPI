@@ -8,3 +8,7 @@ C:\OSGeo4W64\OSGeo4W.bat
 del *.csv
 
 python \ws\mads\SIRH\pull_data\pull_sirh_data.py
+
+git@gitlab.com:minambiente/negocios-verdes.git
+
+https://gitlab.com/recurso-hidrico/sirh
